@@ -1,0 +1,21 @@
+# login-compose.yml
+version: '3.9'
+
+services:
+  login-service:
+    build: .
+    image: my-login-service:1.0 
+    container_name: login-service
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    networks:
+      - backend
+    # depends_on:
+    #   - external_postgres
+
+networks:
+  backend:
+    external: true
