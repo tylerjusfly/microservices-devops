@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeauth-service
+spec:
+  type: NodePort
+  selector:
+    app: auth-service
+  ports:
+    - port: 3000        # internal cluster port
+      targetPort: 3000  # container port in the Pod
+      nodePort: 30080   # external port on localhost (can be 30000–32767)

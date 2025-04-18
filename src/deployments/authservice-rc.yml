@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: auth-service-rc
+  name: auth-service
 spec:
   replicas: 3
   selector:
@@ -30,5 +30,4 @@ spec:
           value: "logindb"
         - name: PGPORT
           value: "5432"
-        
-    
+        resources: {}
